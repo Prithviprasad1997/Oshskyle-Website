@@ -1,0 +1,357 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Oshskyle Logistics — International Freight Forwarding · Bengaluru</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site/styles.css">
+<style>
+  /* ===== HERO ===== */
+  .hero{position:relative;overflow:hidden;background:linear-gradient(180deg,#E8F1F5 0%,#C8DDE8 55%,#7FB4CC 100%);padding:80px 0 0;min-height:780px}
+  .hero .container{position:relative;z-index:3}
+  .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center}
+  .hero-kicker{display:inline-flex;align-items:center;gap:10px;background:var(--cream);border:1px solid var(--rule);padding:8px 14px;border-radius:999px;font-family:"JetBrains Mono";font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--ocean-900)}
+  .hero-kicker .d{width:6px;height:6px;border-radius:999px;background:var(--forest);animation:float 2s infinite ease-in-out}
+  .hero h1{font-family:"Fraunces",serif;font-size:104px;line-height:.96;color:var(--ocean-900);margin-top:26px;font-weight:700;letter-spacing:-.02em}
+  .hero h1 .red{color:var(--brand);font-style:italic;font-weight:600}
+  .hero .sub{margin-top:26px;max-width:520px;font-size:18px;color:var(--ink-2)}
+  .hero .ctas{margin-top:34px;display:flex;gap:12px}
+  /* logo stage right */
+  .hero-logo-stage{position:relative;display:flex;align-items:center;justify-content:center;padding:20px}
+  .hero-logo-stage img{width:100%;max-width:520px;filter:drop-shadow(0 20px 40px rgba(14,43,62,.25));animation:float 5s ease-in-out infinite}
+  /* decorative */
+  .sun{position:absolute;top:80px;right:48%;width:160px;height:160px;border-radius:999px;background:radial-gradient(circle,#FFF5E0 0%,rgba(255,245,224,0) 70%);z-index:1}
+  .cloud{position:absolute;opacity:.6;z-index:1}
+  .cloud-1{top:80px;left:6%;animation:float 8s infinite ease-in-out}
+  .cloud-2{top:140px;right:8%;animation:float 7s infinite ease-in-out;animation-delay:1s}
+  .cloud-3{top:40px;left:42%;animation:float 9s infinite ease-in-out;animation-delay:2s}
+  /* sea waves bottom */
+  .waves{position:absolute;left:0;right:0;bottom:0;height:160px;z-index:2;pointer-events:none;overflow:hidden}
+  .waves svg{width:200%;height:100%;animation:wave 18s linear infinite}
+  /* tracker card */
+  .tracker{position:relative;z-index:4;background:var(--cream);border:1px solid var(--rule);border-radius:6px;padding:28px;margin-top:48px;box-shadow:0 24px 50px -30px rgba(14,43,62,.3)}
+  .tracker .head{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
+  .tracker .lbl{font-family:"JetBrains Mono";font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+  .tracker .live{color:var(--forest)}
+  .tracker form{display:grid;grid-template-columns:1fr auto auto;gap:10px}
+  .tracker input{border:1px solid var(--rule);padding:13px 16px;font-family:"JetBrains Mono";font-size:13px;border-radius:2px;background:#fff}
+  .tracker select{border:1px solid var(--rule);padding:13px 16px;font-family:"JetBrains Mono";font-size:13px;border-radius:2px;background:#fff}
+  .tracker button{background:var(--terra);color:#fff;border:none;padding:13px 22px;border-radius:2px;font-weight:600;cursor:pointer}
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin:64px 0 0;background:var(--cream);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+  .stats > div{padding:32px 36px;border-right:1px solid var(--rule)}
+  .stats > div:last-child{border-right:none}
+  .stats .n{font-family:"Fraunces",serif;font-size:48px;font-weight:700;color:var(--ocean-900)}
+  .stats .n em{color:var(--terra);font-style:normal}
+  .stats .l{font-size:13px;color:var(--muted);margin-top:8px}
+
+  /* ===== TICKER ===== */
+  .ticker{background:var(--ocean-900);color:#C8DDE8;padding:16px 0;overflow:hidden;border-bottom:1px solid var(--line-dark)}
+  .ticker .t{white-space:nowrap;display:flex;gap:52px;animation:wave 60s linear infinite;font-family:"JetBrains Mono";font-size:12px;letter-spacing:.04em}
+  .ticker .t span{display:inline-flex;align-items:center;gap:10px}
+  .ticker .t span::before{content:"";width:5px;height:5px;background:var(--terra);border-radius:999px}
+
+  /* ===== SERVICES ===== */
+  .svc{padding:120px 0;background:var(--paper)}
+  .svc .shead{display:grid;grid-template-columns:200px 1fr 300px;gap:56px;align-items:end;margin-bottom:56px}
+  .svc .shead .no{font-family:"JetBrains Mono";font-size:11px;color:var(--terra);letter-spacing:.2em;text-transform:uppercase;padding-top:10px;border-top:1px solid var(--ocean-900)}
+  .svc .shead h2{font-size:64px;color:var(--ocean-900)}
+  .svc .shead aside{color:var(--ink-2);font-size:15px}
+  .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .svc-card{position:relative;padding:40px 32px;background:var(--cream);border:1px solid var(--rule);border-radius:6px;min-height:320px;overflow:hidden;transition:transform .3s,box-shadow .3s}
+  .svc-card:hover{transform:translateY(-6px);box-shadow:0 30px 50px -30px rgba(14,43,62,.25)}
+  .svc-card .n{font-family:"JetBrains Mono";font-size:11px;color:var(--terra);letter-spacing:.2em}
+  .svc-card h3{font-size:30px;color:var(--ocean-900);margin-top:18px}
+  .svc-card p{font-size:14px;margin-top:12px}
+  .svc-card .icon{position:absolute;top:28px;right:28px;width:56px;height:56px;display:flex;align-items:center;justify-content:center;background:var(--sky-100);border-radius:999px;color:var(--ocean-900)}
+  .svc-card .more{margin-top:24px;display:inline-flex;gap:8px;font-size:13px;font-weight:600;color:var(--brand);border-bottom:1px solid var(--terra);padding-bottom:2px}
+  .svc-card.feat{background:var(--ocean-900);color:#fff;border-color:var(--ocean-900)}
+  .svc-card.feat h3{color:#fff}
+  .svc-card.feat p{color:#C8DDE8}
+  .svc-card.feat .icon{background:var(--line-dark);color:var(--terra)}
+  .svc-card.feat .more{color:#FFB89B;border-color:var(--terra)}
+
+  /* ===== WHY US ===== */
+  .why{padding:120px 0;background:var(--paper-2);position:relative;overflow:hidden}
+  .why .g{display:grid;grid-template-columns:1.2fr 1fr;gap:72px;align-items:center}
+  .why h2{font-size:72px;color:var(--ocean-900)}
+  .why h2 em{color:var(--brand);font-style:italic;font-weight:600}
+  .why .lead{font-size:17px;color:var(--ink-2);margin-top:24px;max-width:520px}
+  .why-vals{margin-top:40px;display:grid;grid-template-columns:1fr 1fr;gap:28px}
+  .why-vals > div{padding-top:20px;border-top:1px solid var(--rule)}
+  .why-vals .n{font-family:"JetBrains Mono";font-size:11px;color:var(--terra);letter-spacing:.2em;margin-bottom:10px}
+  .why-vals h4{font-family:"Fraunces",serif;font-size:22px;color:var(--ocean-900);font-weight:600}
+  .why-vals p{font-size:14px;margin-top:8px}
+  .why-badge{position:relative;aspect-ratio:1/1;background:var(--cream);border:1px solid var(--rule);border-radius:8px;padding:40px;display:flex;flex-direction:column;justify-content:space-between}
+  .why-badge .circle{position:relative;flex:1;display:flex;align-items:center;justify-content:center}
+  .why-badge .circle::before{content:"";position:absolute;inset:8%;border:2px dashed var(--ocean-800);border-radius:999px;animation:spin 30s linear infinite}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .why-badge .big{font-family:"Fraunces",serif;font-size:120px;font-weight:700;color:var(--brand);line-height:1}
+  .why-badge .big em{color:var(--terra);font-style:normal}
+  .why-badge .label{font-family:"JetBrains Mono";font-size:11px;letter-spacing:.3em;text-transform:uppercase;text-align:center;color:var(--muted)}
+
+  /* ===== COVERAGE ===== */
+  .cov{background:var(--ocean-900);color:#fff;padding:120px 0;position:relative;overflow:hidden}
+  .cov::before{content:"";position:absolute;inset:0;background-image:radial-gradient(circle at 20% 30%, rgba(127,180,204,.15) 0, transparent 40%), radial-gradient(circle at 80% 70%, rgba(232,93,60,.1) 0, transparent 40%);pointer-events:none}
+  .cov .shead{display:flex;justify-content:space-between;align-items:end;margin-bottom:64px;position:relative;z-index:2}
+  .cov h2{color:#fff;font-size:72px;max-width:720px}
+  .cov h2 em{color:var(--terra);font-style:normal}
+  .cov .lead{color:#C8DDE8;max-width:380px;font-size:16px}
+  .cov .row{display:grid;grid-template-columns:1.2fr 1fr;gap:56px;position:relative;z-index:2}
+  .india{position:relative;aspect-ratio:4/4.2;background:#0A1F2E;border-radius:8px;overflow:hidden;border:1px solid var(--line-dark)}
+  .india svg{width:100%;height:100%}
+  .dot{position:absolute;width:14px;height:14px;background:var(--terra);border-radius:999px;transform:translate(-50%,-50%);box-shadow:0 0 0 0 rgba(232,93,60,.6);animation:pulse 2.2s infinite}
+  .dot::after{content:attr(data-l);position:absolute;left:20px;top:-5px;font-family:"JetBrains Mono";font-size:10px;color:#fff;letter-spacing:.14em;white-space:nowrap;text-transform:uppercase;background:rgba(14,43,62,.9);padding:3px 7px;border-radius:2px}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(232,93,60,.6)}70%{box-shadow:0 0 0 16px rgba(232,93,60,0)}}
+  .stack .r{display:grid;grid-template-columns:70px 1fr auto;gap:20px;padding:22px 0;border-bottom:1px solid var(--line-dark);align-items:baseline}
+  .stack .n{font-family:"Fraunces",serif;font-weight:700;font-size:34px;color:#fff}
+  .stack .lbl{font-size:14px;color:#C8DDE8}
+  .stack .c{font-family:"JetBrains Mono";font-size:12px;color:var(--terra)}
+
+  /* ===== PARTNERS ===== */
+  .prt{background:var(--paper);padding:80px 0}
+  .prt .e{text-align:center}
+  .prt .row{display:flex;justify-content:center;align-items:center;gap:64px;flex-wrap:wrap;margin-top:40px}
+  .prt .lg{font-family:"Fraunces",serif;font-weight:700;font-size:28px;color:var(--ocean-800);letter-spacing:-.01em;opacity:.55;transition:opacity .3s}
+  .prt .lg:hover{opacity:1;color:var(--brand)}
+
+  /* ===== TESTIMONIAL ===== */
+  .tst{background:var(--paper-2);padding:120px 0}
+  .tst q{font-family:"Fraunces",serif;font-weight:500;font-style:italic;font-size:52px;line-height:1.2;color:var(--ocean-900);display:block;max-width:1000px;quotes:"\201C""\201D"}
+  .tst q::before{color:var(--terra);font-size:72px;line-height:0;vertical-align:-20px;margin-right:8px}
+  .tst .by{margin-top:40px;display:flex;align-items:center;gap:18px}
+  .tst .av{width:56px;height:56px;border-radius:999px;background:var(--brand);color:#fff;display:flex;align-items:center;justify-content:center;font-family:"Fraunces",serif;font-weight:700;font-size:20px}
+  .tst .n{font-family:"Fraunces",serif;font-weight:600;font-size:18px;color:var(--ocean-900)}
+  .tst .r{font-size:13px;color:var(--muted);margin-top:3px}
+
+  /* ===== CTA BAND ===== */
+  .band{background:var(--brand);color:#fff;padding:120px 0;text-align:center;position:relative;overflow:hidden}
+  .band::before{content:"";position:absolute;inset:0;background-image:radial-gradient(circle at 50% 50%, rgba(232,181,74,.15) 0, transparent 60%);pointer-events:none}
+  .band h2{color:#fff;font-size:96px;font-weight:700;line-height:.98;font-style:italic}
+  .band h2 em{color:var(--mustard);font-style:normal;font-weight:600}
+  .band p{color:rgba(255,255,255,.85);max-width:560px;margin:28px auto 0;font-size:17px}
+  .band .btns{margin-top:44px;display:inline-flex;gap:12px}
+  .band .btns .g{background:transparent;border:1px solid rgba(255,255,255,.35);color:#fff}
+</style>
+<link rel="stylesheet" href="site/responsive.css">
+</head>
+<body data-page="home">
+<div id="nav-slot"></div>
+
+<!-- HERO -->
+<section class="hero" data-screen-label="01 Hero">
+  <div class="sun"></div>
+  <svg class="cloud cloud-1" width="140" height="40" viewBox="0 0 140 40"><ellipse cx="30" cy="25" rx="30" ry="12" fill="#fff"/><ellipse cx="65" cy="20" rx="35" ry="15" fill="#fff"/><ellipse cx="105" cy="25" rx="30" ry="12" fill="#fff"/></svg>
+  <svg class="cloud cloud-2" width="180" height="50" viewBox="0 0 180 50"><ellipse cx="40" cy="30" rx="40" ry="15" fill="#fff"/><ellipse cx="90" cy="25" rx="45" ry="18" fill="#fff"/><ellipse cx="140" cy="30" rx="38" ry="14" fill="#fff"/></svg>
+  <svg class="cloud cloud-3" width="100" height="30" viewBox="0 0 100 30"><ellipse cx="30" cy="18" rx="25" ry="10" fill="#fff"/><ellipse cx="60" cy="14" rx="28" ry="12" fill="#fff"/></svg>
+  <div class="container">
+    <div class="hero-grid">
+      <div data-reveal>
+        <span class="hero-kicker"><span class="d"></span>International Freight Forwarding · Bengaluru</span>
+        <h1>Every shipment.<br>Every port.<br><span class="red">Every time.</span></h1>
+        <p class="sub">Air, sea, road, rail, cold chain and customs — handled end-to-end by a Bengaluru team that knows every dock it ships from.</p>
+        <div class="ctas">
+          <a href="contact.html"><button class="btn-p">Request a quote →</button></a>
+          <a href="services.html"><button class="btn-s">See our services</button></a>
+        </div>
+      </div>
+      <div class="hero-logo-stage" data-reveal data-delay="200">
+        <img src="site/logo.png" alt="Oshskyle Logistics" style="width:100%;max-width:520px;filter:drop-shadow(0 20px 40px rgba(14,43,62,.25));animation:float 5s ease-in-out infinite"/>
+        <svg style="display:none" viewBox="0 0 520 520" width="100%" aria-label="Oshskyle Logistics mark">
+          <defs>
+            <radialGradient id="heroGlow" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#FFFFFF" stop-opacity=".6"/>
+              <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+          <circle cx="260" cy="260" r="220" fill="url(#heroGlow)"/>
+          <circle cx="260" cy="260" r="200" stroke="#0E2B3E" stroke-width="2" stroke-dasharray="3 6" opacity=".35" fill="none"/>
+          <circle cx="260" cy="260" r="172" stroke="#0E2B3E" stroke-width="6" fill="#F8F3E9"/>
+          <path d="M140 380 L260 96 L380 380 L332 380 L260 204 L188 380 Z" fill="#0E2B3E"/>
+          <path d="M216 380 L260 280 L304 380 Z" fill="#B8322A"/>
+          <text x="260" y="462" text-anchor="middle" font-family="Fraunces, serif" font-size="56" font-weight="700" fill="#0E2B3E" letter-spacing="-1">OSHSKYLE</text>
+          <line x1="120" y1="488" x2="400" y2="488" stroke="#0E2B3E" stroke-width="2"/>
+          <text x="260" y="510" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="15" fill="#0E2B3E" letter-spacing="8">L O G I S T I C S</text>
+        </svg>
+      </div>
+    </div>
+    <div class="tracker" data-reveal data-delay="300">
+      <div class="head">
+        <span class="lbl">Track your shipment</span>
+        <span class="lbl live">● live tracking</span>
+      </div>
+      <form onsubmit="event.preventDefault();location.href='track.html'">
+        <input value="OSH-4782-2026" placeholder="Enter AWB, B/L, or Booking Ref"/>
+        <select><option>Auto-detect</option><option>AWB</option><option>B/L</option><option>Container</option><option>Booking Ref</option></select>
+        <button>Track →</button>
+      </form>
+    </div>
+    <div class="stats" data-reveal data-delay="400">
+      <div><div class="n">7</div><div class="l">States across India</div></div>
+      <div><div class="n">20<em>+</em></div><div class="l">Ports & airports served</div></div>
+      <div><div class="n">12</div><div class="l">Specialised services</div></div>
+      <div><div class="n">24/7</div><div class="l">Customer support</div></div>
+    </div>
+  </div>
+  <div class="waves">
+    <svg viewBox="0 0 2880 160" preserveAspectRatio="none">
+      <path d="M0 80 Q360 20 720 80 T1440 80 T2160 80 T2880 80 L2880 160 L0 160 Z" fill="#2B5A7A" opacity=".5"/>
+      <path d="M0 100 Q360 40 720 100 T1440 100 T2160 100 T2880 100 L2880 160 L0 160 Z" fill="#1B3A52" opacity=".8"/>
+      <path d="M0 130 Q360 80 720 130 T1440 130 T2160 130 T2880 130 L2880 160 L0 160 Z" fill="#0E2B3E"/>
+    </svg>
+  </div>
+</section>
+
+<div class="ticker"><div class="t">
+  <span>BLR → DXB · 40HC · On Time</span><span>MAA → SIN · Air · Cleared Customs</span><span>Nhava Sheva → Rotterdam · Booked</span><span>ICD Whitefield → HAM · Gate-in</span><span>COK → JED · Cold Chain · 4°C</span><span>Mundra → DXB · Sailing</span>
+  <span>BLR → DXB · 40HC · On Time</span><span>MAA → SIN · Air · Cleared Customs</span><span>Nhava Sheva → Rotterdam · Booked</span><span>ICD Whitefield → HAM · Gate-in</span><span>COK → JED · Cold Chain · 4°C</span><span>Mundra → DXB · Sailing</span>
+</div></div>
+
+<!-- SERVICES -->
+<section class="svc" data-screen-label="02 Services">
+  <div class="container">
+    <div class="shead">
+      <div class="no" data-reveal>01 · What we do</div>
+      <h2 data-reveal data-delay="100">One partner.<br>Every mode of transport.</h2>
+      <aside data-reveal data-delay="200">From the first pickup to the last mile — air, sea, road, rail, warehousing, customs and cold chain all under one roof, one account manager.</aside>
+    </div>
+    <div class="svc-grid">
+      <div class="svc-card" data-reveal>
+        <div class="icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5z"/></svg></div>
+        <div class="n">01</div>
+        <h3>Air Freight</h3>
+        <p>Consolidated & charter across 30+ carriers — Emirates, Air India, Lufthansa, Qatar.</p>
+        <a class="more" href="services.html">Learn more →</a>
+      </div>
+      <div class="svc-card feat" data-reveal data-delay="100">
+        <div class="icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M2 20h20l-2-4H4l-2 4zm4-6h12l-1-3H7l-1 3zm3-5h6l-2-6H11l-2 6z"/></svg></div>
+        <div class="n">02</div>
+        <h3>Ocean Freight</h3>
+        <p>FCL, LCL, break bulk and project cargo through Nhava Sheva, Mundra, Chennai and Cochin.</p>
+        <a class="more" href="services.html">Learn more →</a>
+      </div>
+      <div class="svc-card" data-reveal data-delay="200">
+        <div class="icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M3 7h11v8H3zm13 3h4l2 3v2h-2a2 2 0 1 1-4 0h-2a2 2 0 1 1-4 0H5a2 2 0 1 1-4 0v-1h2V7z"/></svg></div>
+        <div class="n">03</div>
+        <h3>Road & Trucking</h3>
+        <p>Door-to-door across India with a vetted, GPS-tracked carrier network.</p>
+        <a class="more" href="services.html">Learn more →</a>
+      </div>
+      <div class="svc-card" data-reveal>
+        <div class="icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M4 3h16v14H4zm2 2v10h12V5zm-1 14h14l2 2v1H3v-1z"/></svg></div>
+        <div class="n">04</div>
+        <h3>Rail Freight</h3>
+        <p>Greener, lower-cost long-haul for bulk and containerised cargo.</p>
+        <a class="more" href="services.html">Learn more →</a>
+      </div>
+      <div class="svc-card" data-reveal data-delay="100">
+        <div class="icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a4 4 0 0 0-4 4v7.5a5.5 5.5 0 1 0 8 0V6a4 4 0 0 0-4-4zm0 2a2 2 0 0 1 2 2v5h-4V6a2 2 0 0 1 2-2z"/></svg></div>
+        <div class="n">05</div>
+        <h3>Cold Chain</h3>
+        <p>Temperature-controlled for pharma, produce and seafood. 24/7 monitored.</p>
+        <a class="more" href="services.html">Learn more →</a>
+      </div>
+      <div class="svc-card" data-reveal data-delay="200">
+        <div class="icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 4 5v6c0 5 3.5 9.5 8 11 4.5-1.5 8-6 8-11V5l-8-3z"/></svg></div>
+        <div class="n">06</div>
+        <h3>Customs Brokerage</h3>
+        <p>In-house CHA clearance at every port and airport we operate from.</p>
+        <a class="more" href="services.html">Learn more →</a>
+      </div>
+    </div>
+    <div style="margin-top:40px;text-align:center"><a href="services.html" style="font-size:14px;font-weight:600;color:var(--brand);border-bottom:1px solid var(--terra);padding-bottom:4px">See all 12 services →</a></div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section class="why" data-screen-label="03 Why">
+  <div class="container">
+    <div class="g">
+      <div data-reveal>
+        <div class="eyebrow" style="color:var(--terra)">02 · Why Oshskyle</div>
+        <h2 style="margin-top:14px">A Bengaluru team that <em>knows every dock</em> it ships from.</h2>
+        <p class="lead">A decade in freight has taught us that the difference between a good shipper and a great one is whoever picks up the phone at 11pm when a container is stuck.</p>
+        <div class="why-vals">
+          <div><div class="n">01</div><h4>Innovative thinking</h4><p>We question the route, the mode and the paperwork — not just the price.</p></div>
+          <div><div class="n">02</div><h4>Commitment to customers</h4><p>A named account manager, not a ticket queue. Available 24/7.</p></div>
+          <div><div class="n">03</div><h4>Dedication to excellence</h4><p>Cleared paperwork, on-schedule arrivals, no surprises at destination.</p></div>
+          <div><div class="n">04</div><h4>Partner network</h4><p>Air India · Emirates · Maersk · Hapag-Lloyd · MSC · CMA CGM.</p></div>
+        </div>
+      </div>
+      <div class="why-badge" data-reveal data-delay="200">
+        <div class="label">BENGALURU · INDIA</div>
+        <div class="circle"><div class="big">20<em>+</em></div></div>
+        <div class="label">Ports & airports served</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COVERAGE -->
+<section class="cov" data-screen-label="04 Coverage">
+  <div class="container">
+    <div class="shead">
+      <div data-reveal>
+        <div class="eyebrow" style="color:#7FB4CC">03 · Coverage</div>
+        <h2 style="margin-top:14px">Operating across<br><em>7 states</em>, 20+ ports.</h2>
+      </div>
+      <p class="lead" data-reveal data-delay="100">Headquartered in Bengaluru, with on-ground teams at every major freight hub in India. Go deeper on the coverage page.</p>
+    </div>
+    <div class="row">
+      <div class="india" data-reveal>
+        <svg viewBox="0 0 400 400" fill="none">
+          <path d="M140 50 L180 40 L220 55 L250 45 L280 60 L290 90 L280 120 L300 145 L320 170 L315 205 L295 225 L300 250 L285 280 L260 310 L235 340 L210 360 L185 345 L170 320 L155 300 L130 275 L110 245 L95 215 L100 180 L115 150 L105 120 L120 90 L140 70 Z" stroke="#2A4568" stroke-width="1.5" fill="#1B3A52"/>
+          <g stroke="#24445E" stroke-width="1" stroke-dasharray="2 6"><line x1="0" y1="120" x2="400" y2="120"/><line x1="0" y1="200" x2="400" y2="200"/><line x1="0" y1="280" x2="400" y2="280"/></g>
+        </svg>
+        <div class="dot" data-l="Bengaluru · HQ" style="left:40%;top:72%"></div>
+        <div class="dot" data-l="Chennai" style="left:52%;top:72%;animation-delay:.3s"></div>
+        <div class="dot" data-l="Kochi" style="left:38%;top:85%;animation-delay:.6s"></div>
+        <div class="dot" data-l="Mumbai" style="left:28%;top:55%;animation-delay:.9s"></div>
+        <div class="dot" data-l="Ahmedabad" style="left:26%;top:40%;animation-delay:1.2s"></div>
+        <div class="dot" data-l="Delhi" style="left:42%;top:28%;animation-delay:1.5s"></div>
+        <div class="dot" data-l="Vizag" style="left:55%;top:58%;animation-delay:1.8s"></div>
+      </div>
+      <div class="stack" data-reveal data-delay="200">
+        <div class="r"><div class="n">7</div><div class="lbl">States across India</div><div class="c">→</div></div>
+        <div class="r"><div class="n">20+</div><div class="lbl">Ports and airports served</div><div class="c">→</div></div>
+        <div class="r" style="border-bottom:none"><div class="n">4</div><div class="lbl">Major container hubs</div><div class="c">→</div></div>
+        <div style="margin-top:28px"><a href="coverage.html" class="btn-o" style="display:inline-block">See full coverage →</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PARTNERS -->
+<div class="prt"><div class="container">
+  <div class="e"><div class="eyebrow" data-reveal>Trusted by carriers · certified by authorities</div></div>
+  <div class="row" data-reveal data-delay="100">
+    <span class="lg">Air India</span><span class="lg">Emirates</span><span class="lg">Maersk</span><span class="lg">Hapag-Lloyd</span><span class="lg">MSC</span><span class="lg">CMA CGM</span><span class="lg">Lufthansa</span>
+  </div>
+</div></div>
+
+<!-- TESTIMONIAL -->
+<div class="tst"><div class="container">
+  <div class="eyebrow" data-reveal>From a long-time client</div>
+  <q data-reveal data-delay="100" style="margin-top:32px">A named account manager who picks up at 11pm when a container is stuck at Nhava Sheva. That's not logistics — that's trust.</q>
+  <div class="by" data-reveal data-delay="200"><div class="av">AK</div><div><div class="n">Arjun Krishnan</div><div class="r">Head of Supply Chain · Bengaluru pharma exporter · 7 years</div></div></div>
+</div></div>
+
+<!-- CTA -->
+<div class="band" data-screen-label="05 CTA">
+  <div class="container">
+    <div class="eyebrow" style="color:var(--mustard)" data-reveal>Ready to ship?</div>
+    <h2 data-reveal data-delay="100" style="margin-top:20px">We move what<br>matters. <em>On time.</em></h2>
+    <p data-reveal data-delay="200">Get a quote in under 4 working hours. One phone number, one account manager, one price — no surprises at destination.</p>
+    <div class="btns" data-reveal data-delay="300">
+      <a href="contact.html"><button class="btn-o" style="background:var(--mustard);color:var(--ocean-900)">Request a quote →</button></a>
+      <a href="track.html"><button class="btn-p g">Track a shipment</button></a>
+    </div>
+  </div>
+</div>
+
+<div id="foot-slot"></div>
+<script src="site/chrome.js"></script>
+</body>
+</html>

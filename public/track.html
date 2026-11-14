@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Track — Oshskyle Logistics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site/styles.css">
+<style>
+  .page-hero{background:linear-gradient(180deg,#E8F1F5 0%,#C8DDE8 100%);padding:80px 0 100px}
+  .crumb{font-family:"JetBrains Mono";font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--ocean-800)}
+  .page-hero h1{font-family:"Fraunces",serif;font-size:88px;line-height:.96;color:var(--ocean-900);margin-top:22px;font-weight:700;letter-spacing:-.02em}
+  .page-hero h1 em{color:var(--brand);font-style:italic;font-weight:600}
+  .page-hero p.lead{margin-top:24px;max-width:560px;font-size:18px;color:var(--ink-2)}
+  .tracker-big{background:var(--cream);border:1px solid var(--rule);border-radius:8px;padding:36px;margin-top:48px;box-shadow:0 30px 60px -30px rgba(14,43,62,.25)}
+  .tracker-big .head{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px}
+  .tracker-big .lbl{font-family:"JetBrains Mono";font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+  .tracker-big .live{color:var(--forest)}
+  .tracker-big form{display:grid;grid-template-columns:1fr auto auto;gap:12px}
+  .tracker-big input{border:1px solid var(--rule);padding:18px 20px;font-family:"JetBrains Mono";font-size:15px;border-radius:3px;background:#fff}
+  .tracker-big select{border:1px solid var(--rule);padding:18px 20px;font-family:"JetBrains Mono";font-size:13px;border-radius:3px;background:#fff}
+  .tracker-big button{background:var(--brand);color:#fff;border:none;padding:18px 28px;border-radius:3px;font-weight:600;font-size:14px;cursor:pointer}
+
+  .result{padding:100px 0;background:var(--paper)}
+  .result h2{font-size:48px;color:var(--ocean-900)}
+  .result h2 em{color:var(--brand);font-style:italic;font-weight:600}
+  .result .card{margin-top:40px;background:var(--cream);border:1px solid var(--rule);border-radius:8px;overflow:hidden}
+  .result .top{padding:32px 36px;background:var(--ocean-900);color:#fff;display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:32px}
+  .result .top .k{font-family:"JetBrains Mono";font-size:10px;color:#7FB4CC;letter-spacing:.18em;text-transform:uppercase;margin-bottom:8px}
+  .result .top .v{font-family:"Fraunces";font-size:22px;color:#fff;font-weight:600}
+  .result .top .v.orange{color:var(--terra)}
+  .result .route{padding:48px 36px;border-bottom:1px solid var(--rule)}
+  .result .route .line{position:relative;display:grid;grid-template-columns:1fr 2fr 1fr;gap:24px;align-items:center}
+  .result .route .pt h3{font-family:"Fraunces";font-size:34px;color:var(--ocean-900)}
+  .result .route .pt .code{font-family:"JetBrains Mono";font-size:12px;color:var(--muted);letter-spacing:.14em;text-transform:uppercase;margin-top:6px}
+  .result .route .pt.right{text-align:right}
+  .result .route .bar{position:relative;height:2px;background:linear-gradient(to right,var(--ocean-900) 0% 65%,var(--rule) 65% 100%);border-radius:2px}
+  .result .route .bar .plane{position:absolute;left:65%;top:-10px;transform:translateX(-50%);width:22px;height:22px;background:var(--terra);border-radius:999px;box-shadow:0 0 0 6px rgba(232,93,60,.2);display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px}
+  .result .route .bar::before{content:"";position:absolute;left:-4px;top:-3px;width:8px;height:8px;background:var(--ocean-900);border-radius:999px}
+  .result .route .bar::after{content:"";position:absolute;right:-4px;top:-3px;width:8px;height:8px;background:var(--rule);border-radius:999px}
+  .result .route .labels{margin-top:32px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px}
+  .result .route .labels > div{font-family:"JetBrains Mono";font-size:11px;color:var(--muted);letter-spacing:.14em;text-transform:uppercase}
+  .result .route .labels > div strong{display:block;color:var(--ocean-900);font-family:"Fraunces";font-size:18px;font-weight:600;margin-top:4px;letter-spacing:0;text-transform:none}
+
+  .events{padding:40px 36px}
+  .events h4{font-family:"JetBrains Mono";font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:24px;font-weight:500}
+  .evt{display:grid;grid-template-columns:140px 1fr 200px;gap:24px;padding:20px 0;border-bottom:1px dashed var(--rule);align-items:baseline}
+  .evt:last-child{border-bottom:none}
+  .evt .time{font-family:"JetBrains Mono";font-size:12px;color:var(--muted);letter-spacing:.08em}
+  .evt .d{font-family:"Fraunces";font-size:17px;color:var(--ocean-900);font-weight:600}
+  .evt .d em{color:var(--brand);font-style:italic}
+  .evt .loc{font-family:"JetBrains Mono";font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.14em;text-align:right}
+  .evt.cur .d::before{content:"● ";color:var(--forest)}
+
+  .help{padding:100px 0;background:var(--paper-2)}
+  .help h2{font-size:48px;color:var(--ocean-900)}
+  .help .g{margin-top:40px;display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .help .card{background:var(--cream);border:1px solid var(--rule);border-radius:6px;padding:32px;min-height:180px}
+  .help .card h4{font-family:"Fraunces";font-size:22px;color:var(--ocean-900);font-weight:600}
+  .help .card p{font-size:13px;margin-top:10px}
+  .help .card a{color:var(--brand);font-weight:600;border-bottom:1px solid var(--terra);display:inline-block;margin-top:14px;font-size:13px;padding-bottom:2px}
+</style>
+<link rel="stylesheet" href="site/responsive.css">
+</head>
+<body data-page="track">
+<div id="nav-slot"></div>
+
+<section class="page-hero">
+  <div class="container">
+    <div class="crumb" data-reveal>Home / Track</div>
+    <h1 data-reveal data-delay="100">Track any<br>shipment. <em>Live.</em></h1>
+    <p class="lead" data-reveal data-delay="200">AWB, B/L, container number or booking reference — we'll find it. Live ETAs, port events, and customs status in real time.</p>
+    <div class="tracker-big" data-reveal data-delay="300">
+      <div class="head">
+        <span class="lbl">Track your shipment</span>
+        <span class="lbl live">● live · updated just now</span>
+      </div>
+      <form>
+        <input value="OSH-4782-2026" placeholder="Enter AWB, B/L, container no. or booking ref"/>
+        <select><option>Auto-detect</option><option>AWB</option><option>B/L</option><option>Container</option><option>Booking</option></select>
+        <button>Track →</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section class="result">
+  <div class="container">
+    <div class="eyebrow" data-reveal style="color:var(--terra)">Showing example · OSH-4782-2026</div>
+    <h2 data-reveal data-delay="100" style="margin-top:14px">In transit. <em>On schedule.</em></h2>
+    <div class="card" data-reveal data-delay="200">
+      <div class="top">
+        <div><div class="k">Reference</div><div class="v">OSH-4782-2026</div></div>
+        <div><div class="k">Mode</div><div class="v">Ocean · 40HC</div></div>
+        <div><div class="k">Container</div><div class="v">MSKU 4782 338</div></div>
+        <div><div class="k">Status</div><div class="v orange">● In transit</div></div>
+      </div>
+      <div class="route">
+        <div class="line">
+          <div class="pt"><h3>Mundra</h3><div class="code">INMUN · Gujarat · IN</div></div>
+          <div class="bar"><div class="plane">→</div></div>
+          <div class="pt right"><h3>Jebel Ali</h3><div class="code">AEJEA · Dubai · UAE</div></div>
+        </div>
+        <div class="labels">
+          <div>Departed<strong>18 · APR · 2026</strong></div>
+          <div style="text-align:center">Vessel<strong>MSC Rebecca · V.2618E</strong></div>
+          <div style="text-align:right">ETA<strong>22 · APR · 18:40 IST</strong></div>
+        </div>
+      </div>
+      <div class="events">
+        <h4>Shipment events</h4>
+        <div class="evt cur"><div class="time">19·APR · 09:04</div><div class="d">Sailing — <em>vessel on open sea</em></div><div class="loc">28.8°N · 64.2°E</div></div>
+        <div class="evt"><div class="time">18·APR · 22:30</div><div class="d">Vessel departed Mundra</div><div class="loc">Mundra · IN</div></div>
+        <div class="evt"><div class="time">18·APR · 14:10</div><div class="d">Container loaded onboard</div><div class="loc">Mundra · Berth 7</div></div>
+        <div class="evt"><div class="time">17·APR · 18:45</div><div class="d">Customs cleared · LEO granted</div><div class="loc">Mundra CFS</div></div>
+        <div class="evt"><div class="time">17·APR · 11:20</div><div class="d">Shipping bill filed</div><div class="loc">Mundra CFS</div></div>
+        <div class="evt"><div class="time">16·APR · 16:00</div><div class="d">Container gate-in at port</div><div class="loc">Mundra Gate 4</div></div>
+        <div class="evt"><div class="time">15·APR · 09:00</div><div class="d">Pickup at Bengaluru factory</div><div class="loc">Whitefield · BLR</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="help">
+  <div class="container">
+    <div class="eyebrow" data-reveal style="color:var(--terra)">Need a hand?</div>
+    <h2 data-reveal data-delay="100" style="margin-top:14px">Can't find your shipment?</h2>
+    <div class="g">
+      <div class="card" data-reveal><h4>Call us</h4><p>24/7 shipment desk for live assistance. A human picks up.</p><a href="tel:+916361212063">+91 6361 212 063 →</a></div>
+      <div class="card" data-reveal data-delay="100"><h4>WhatsApp</h4><p>Send your reference number and we'll send back a live status in under 5 minutes.</p><a href="https://wa.me/916361212063">Start a WhatsApp chat →</a></div>
+      <div class="card" data-reveal data-delay="200"><h4>Email your AM</h4><p>Your named account manager's inbox — not a ticket queue.</p><a href="mailto:info@oshskylelogistics.com">info@oshskylelogistics.com →</a></div>
+    </div>
+  </div>
+</section>
+
+<div id="foot-slot"></div>
+<script src="site/chrome.js"></script>
+</body>
+</html>

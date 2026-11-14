@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Coverage — Oshskyle Logistics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site/styles.css">
+<style>
+  .page-hero{background:var(--ocean-900);color:#fff;padding:80px 0 140px;position:relative;overflow:hidden}
+  .page-hero::before{content:"";position:absolute;inset:0;background-image:radial-gradient(circle at 70% 30%, rgba(127,180,204,.15) 0, transparent 50%),radial-gradient(circle at 20% 70%, rgba(232,93,60,.1) 0, transparent 45%);pointer-events:none}
+  .page-hero .container{position:relative;z-index:2}
+  .crumb{font-family:"JetBrains Mono";font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#7FB4CC}
+  .page-hero h1{font-family:"Fraunces",serif;font-size:104px;line-height:.96;color:#fff;margin-top:22px;font-weight:700;letter-spacing:-.02em}
+  .page-hero h1 em{color:var(--terra);font-style:italic;font-weight:600}
+  .page-hero p.lead{margin-top:28px;max-width:620px;font-size:19px;color:#C8DDE8}
+
+  .big-map{padding:0;margin-top:-80px;position:relative;z-index:3}
+  .map-card{background:var(--cream);border:1px solid var(--rule);border-radius:8px;overflow:hidden;box-shadow:0 40px 80px -40px rgba(14,43,62,.5);display:grid;grid-template-columns:1.4fr 1fr;min-height:700px}
+  .map-stage{position:relative;background:#0A1F2E;padding:40px}
+  .map-stage svg.india{width:100%;height:100%}
+  .map-legend{position:absolute;top:24px;left:24px;display:flex;gap:12px;font-family:"JetBrains Mono";font-size:10px;color:#C8DDE8;letter-spacing:.12em;text-transform:uppercase}
+  .map-legend span{display:inline-flex;align-items:center;gap:6px}
+  .map-legend .dt{width:8px;height:8px;border-radius:999px}
+  .dot{position:absolute;width:16px;height:16px;background:var(--terra);border-radius:999px;transform:translate(-50%,-50%);box-shadow:0 0 0 0 rgba(232,93,60,.6);animation:pulse 2.2s infinite}
+  .dot.hq{background:var(--mustard);width:22px;height:22px}
+  .dot::after{content:attr(data-l);position:absolute;left:22px;top:-3px;font-family:"JetBrains Mono";font-size:11px;color:#fff;letter-spacing:.14em;white-space:nowrap;text-transform:uppercase;background:rgba(14,43,62,.95);padding:4px 8px;border-radius:2px;border:1px solid #24445E}
+  .dot.hq::after{background:var(--mustard);color:var(--ocean-900);border-color:var(--mustard);font-weight:700}
+  .map-side{background:var(--cream);padding:56px 48px;overflow-y:auto}
+  .map-side h2{font-family:"Fraunces",serif;font-size:40px;color:var(--ocean-900);font-weight:700}
+  .map-side .tabs{display:flex;gap:6px;margin-top:24px;border-bottom:1px solid var(--rule)}
+  .map-side .tabs button{background:none;border:none;padding:12px 16px;font-family:"Inter";font-size:13px;font-weight:600;color:var(--muted);cursor:pointer;border-bottom:2px solid transparent}
+  .map-side .tabs button.on{color:var(--brand);border-color:var(--terra)}
+  .map-side .lrow{display:grid;grid-template-columns:48px 1fr auto;gap:16px;padding:18px 0;border-bottom:1px solid var(--rule);align-items:center}
+  .map-side .lrow .n{font-family:"JetBrains Mono";font-size:11px;color:var(--terra);letter-spacing:.2em}
+  .map-side .lrow .name{font-family:"Fraunces",serif;font-size:20px;color:var(--ocean-900);font-weight:600}
+  .map-side .lrow .d{font-size:12px;color:var(--muted);margin-top:3px}
+  .map-side .lrow .c{font-family:"JetBrains Mono";font-size:12px;color:var(--brand);font-weight:600}
+
+  .hubs{padding:120px 0;background:var(--paper)}
+  .hubs h2{font-size:64px;color:var(--ocean-900);max-width:900px}
+  .hubs h2 em{color:var(--brand);font-style:italic;font-weight:600}
+  .hubs .g{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:56px}
+  .hub{background:var(--cream);border:1px solid var(--rule);border-radius:6px;padding:32px;min-height:240px;display:flex;flex-direction:column;justify-content:space-between}
+  .hub h4{font-family:"Fraunces";font-size:28px;color:var(--ocean-900);font-weight:600}
+  .hub .sub{font-family:"JetBrains Mono";font-size:11px;color:var(--terra);letter-spacing:.18em;text-transform:uppercase;margin-top:6px}
+  .hub .cnt{font-family:"Fraunces";font-size:56px;font-weight:700;color:var(--ocean-900);line-height:1;margin-top:24px}
+  .hub .cnt em{color:var(--terra);font-style:normal}
+  .hub .list{margin-top:16px;font-size:13px;color:var(--muted);line-height:1.8}
+
+  .lanes{padding:120px 0;background:var(--ocean-900);color:#fff}
+  .lanes h2{color:#fff;font-size:64px;max-width:800px}
+  .lanes h2 em{color:var(--terra);font-style:italic;font-weight:600}
+  .lanes table{width:100%;border-collapse:collapse;margin-top:56px}
+  .lanes th{text-align:left;font-family:"JetBrains Mono";font-size:11px;color:#7FB4CC;letter-spacing:.18em;text-transform:uppercase;padding:18px 16px;border-bottom:1px solid var(--line-dark);font-weight:500}
+  .lanes td{padding:20px 16px;border-bottom:1px solid var(--line-dark);font-size:14px}
+  .lanes td.pt{font-family:"Fraunces";font-size:20px;color:#fff;font-weight:600}
+  .lanes td.tr{color:#C8DDE8}
+  .lanes td.md{font-family:"JetBrains Mono";font-size:11px;color:var(--terra);letter-spacing:.12em}
+  .lanes td.t{color:#fff;font-weight:600}
+
+  .band{background:var(--brand);color:#fff;padding:100px 0;text-align:center}
+  .band h2{color:#fff;font-size:72px;font-weight:700;font-style:italic}
+  .band h2 em{color:var(--mustard);font-style:normal;font-weight:600}
+  .band p{color:rgba(255,255,255,.85);max-width:540px;margin:24px auto 0;font-size:16px}
+  .band .btns{margin-top:40px}
+</style>
+<link rel="stylesheet" href="site/responsive.css">
+</head>
+<body data-page="coverage">
+<div id="nav-slot"></div>
+
+<section class="page-hero">
+  <div class="container">
+    <div class="crumb" data-reveal>Home / Coverage</div>
+    <h1 data-reveal data-delay="100">Every port.<br>Every airport.<br><em>Every state.</em></h1>
+    <p class="lead" data-reveal data-delay="200">Headquartered in Bengaluru. On-ground teams at every major freight hub. 7 states, 20+ nodes, one network.</p>
+  </div>
+</section>
+
+<section class="big-map">
+  <div class="container">
+    <div class="map-card" data-reveal>
+      <div class="map-stage">
+        <div class="map-legend"><span><span class="dt" style="background:#E8B54A"></span>Headquarters</span><span><span class="dt" style="background:#E85D3C"></span>Operational hub</span></div>
+        <svg class="india" viewBox="0 0 400 480" fill="none">
+          <path d="M150 40 L195 30 L240 50 L275 42 L310 62 L320 100 L310 140 L335 175 L358 210 L352 252 L325 275 L335 310 L315 345 L285 380 L255 415 L225 438 L195 420 L175 390 L155 365 L128 335 L105 295 L88 255 L92 210 L110 175 L97 135 L118 100 L140 75 Z" stroke="#2A4568" stroke-width="2" fill="#1B3A52"/>
+          <g stroke="#24445E" stroke-width="1" stroke-dasharray="2 6">
+            <line x1="0" y1="140" x2="400" y2="140"/><line x1="0" y1="240" x2="400" y2="240"/><line x1="0" y1="340" x2="400" y2="340"/>
+            <line x1="100" y1="0" x2="100" y2="480"/><line x1="200" y1="0" x2="200" y2="480"/><line x1="300" y1="0" x2="300" y2="480"/>
+          </g>
+        </svg>
+        <div class="dot hq" data-l="Bengaluru · HQ" style="left:42%;top:68%"></div>
+        <div class="dot" data-l="Chennai" style="left:54%;top:70%;animation-delay:.2s"></div>
+        <div class="dot" data-l="Cochin" style="left:40%;top:82%;animation-delay:.4s"></div>
+        <div class="dot" data-l="Mumbai" style="left:28%;top:54%;animation-delay:.6s"></div>
+        <div class="dot" data-l="Mundra" style="left:19%;top:42%;animation-delay:.8s"></div>
+        <div class="dot" data-l="Ahmedabad" style="left:25%;top:38%;animation-delay:1s"></div>
+        <div class="dot" data-l="Delhi" style="left:43%;top:22%;animation-delay:1.2s"></div>
+        <div class="dot" data-l="Visakhapatnam" style="left:58%;top:56%;animation-delay:1.4s"></div>
+        <div class="dot" data-l="Coimbatore" style="left:46%;top:76%;animation-delay:1.6s"></div>
+      </div>
+      <div class="map-side">
+        <div class="eyebrow" style="color:var(--terra)">Locations directory</div>
+        <h2 style="margin-top:10px">7 states.<br>20+ nodes.</h2>
+        <div class="tabs"><button class="on">All</button><button>Ports</button><button>Airports</button><button>ICDs</button></div>
+        <div>
+          <div class="lrow"><div class="n">01</div><div><div class="name">Karnataka</div><div class="d">Kempegowda Int'l · ICD Whitefield · New Mangalore Port</div></div><div class="c">HQ</div></div>
+          <div class="lrow"><div class="n">02</div><div><div class="name">Tamil Nadu</div><div class="d">Chennai · Coimbatore · Trichy · Tuticorin</div></div><div class="c">5</div></div>
+          <div class="lrow"><div class="n">03</div><div><div class="name">Kerala</div><div class="d">Cochin · Trivandrum · Calicut · Vizhinjam</div></div><div class="c">5</div></div>
+          <div class="lrow"><div class="n">04</div><div><div class="name">Maharashtra</div><div class="d">Chhatrapati Shivaji · Nhava Sheva Port</div></div><div class="c">2</div></div>
+          <div class="lrow"><div class="n">05</div><div><div class="name">Gujarat</div><div class="d">Ahmedabad · Surat · Mundra Port</div></div><div class="c">3</div></div>
+          <div class="lrow"><div class="n">06</div><div><div class="name">Andhra Pradesh</div><div class="d">Visakhapatnam · VTZ Sea Port</div></div><div class="c">2</div></div>
+          <div class="lrow" style="border-bottom:none"><div class="n">07</div><div><div class="name">New Delhi</div><div class="d">Indira Gandhi Int'l Airport (IGIA)</div></div><div class="c">1</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hubs">
+  <div class="container">
+    <div class="eyebrow" data-reveal style="color:var(--terra)">Major hubs</div>
+    <h2 data-reveal data-delay="100" style="margin-top:14px">Four container gateways.<br><em>Every sea lane</em> out of India.</h2>
+    <div class="g">
+      <div class="hub" data-reveal>
+        <div><div class="sub">Maharashtra</div><h4>Nhava Sheva</h4>
+          <div class="list">JNPT · BMCT · NSICT · APMT<br>Weekly to Dubai, Singapore, Rotterdam</div></div>
+        <div class="cnt">5.8<em>M</em><div style="font-size:11px;font-family:'JetBrains Mono';letter-spacing:.16em;color:var(--muted);text-transform:uppercase;margin-top:8px">TEUs / year · handled</div></div>
+      </div>
+      <div class="hub" data-reveal data-delay="100">
+        <div><div class="sub">Gujarat</div><h4>Mundra Port</h4>
+          <div class="list">Adani · container · dry bulk<br>Direct services to US, Europe, ME</div></div>
+        <div class="cnt">6.2<em>M</em><div style="font-size:11px;font-family:'JetBrains Mono';letter-spacing:.16em;color:var(--muted);text-transform:uppercase;margin-top:8px">TEUs / year · handled</div></div>
+      </div>
+      <div class="hub" data-reveal data-delay="200">
+        <div><div class="sub">Tamil Nadu</div><h4>Chennai Port</h4>
+          <div class="list">CCTL · CITPL · coastal<br>Primary gateway for South India</div></div>
+        <div class="cnt">1.5<em>M</em><div style="font-size:11px;font-family:'JetBrains Mono';letter-spacing:.16em;color:var(--muted);text-transform:uppercase;margin-top:8px">TEUs / year · handled</div></div>
+      </div>
+      <div class="hub" data-reveal>
+        <div><div class="sub">Kerala</div><h4>Cochin (ICTT)</h4>
+          <div class="list">Vallarpadam · transshipment<br>Cold chain and seafood specialist</div></div>
+        <div class="cnt">720<em>K</em><div style="font-size:11px;font-family:'JetBrains Mono';letter-spacing:.16em;color:var(--muted);text-transform:uppercase;margin-top:8px">TEUs / year · handled</div></div>
+      </div>
+      <div class="hub" data-reveal data-delay="100">
+        <div><div class="sub">Karnataka</div><h4>ICD Whitefield</h4>
+          <div class="list">Bengaluru container depot<br>Rail-linked to JNPT and Mundra</div></div>
+        <div class="cnt">220<em>K</em><div style="font-size:11px;font-family:'JetBrains Mono';letter-spacing:.16em;color:var(--muted);text-transform:uppercase;margin-top:8px">TEUs / year · handled</div></div>
+      </div>
+      <div class="hub" data-reveal data-delay="200">
+        <div><div class="sub">Andhra Pradesh</div><h4>Visakhapatnam</h4>
+          <div class="list">East coast deep-water port<br>Specialised bulk and project cargo</div></div>
+        <div class="cnt">80<em>M</em><div style="font-size:11px;font-family:'JetBrains Mono';letter-spacing:.16em;color:var(--muted);text-transform:uppercase;margin-top:8px">Tonnes / year · handled</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="lanes">
+  <div class="container">
+    <div class="eyebrow" data-reveal style="color:#7FB4CC">Regular lanes</div>
+    <h2 data-reveal data-delay="100" style="margin-top:14px">Weekly sailings.<br>Daily flights. <em>One call.</em></h2>
+    <table data-reveal data-delay="200">
+      <thead><tr><th>Origin</th><th>Destination</th><th>Mode</th><th>Transit</th><th>Frequency</th></tr></thead>
+      <tbody>
+        <tr><td class="pt">Bengaluru</td><td class="tr">Dubai (DXB)</td><td class="md">Air</td><td class="t">4 hrs</td><td class="tr">Daily</td></tr>
+        <tr><td class="pt">Nhava Sheva</td><td class="tr">Jebel Ali</td><td class="md">Ocean · FCL</td><td class="t">7 days</td><td class="tr">Weekly · 3x</td></tr>
+        <tr><td class="pt">Mundra</td><td class="tr">Rotterdam</td><td class="md">Ocean · FCL</td><td class="t">22 days</td><td class="tr">Weekly · 2x</td></tr>
+        <tr><td class="pt">Chennai</td><td class="tr">Singapore</td><td class="md">Ocean · LCL</td><td class="t">5 days</td><td class="tr">Weekly · 4x</td></tr>
+        <tr><td class="pt">Cochin</td><td class="tr">Jeddah (cold)</td><td class="md">Reefer · Air</td><td class="t">9 hrs</td><td class="tr">4x weekly</td></tr>
+        <tr><td class="pt">Delhi (IGIA)</td><td class="tr">Frankfurt</td><td class="md">Air · Charter</td><td class="t">8 hrs</td><td class="tr">On-demand</td></tr>
+        <tr><td class="pt">Ahmedabad</td><td class="tr">New York</td><td class="md">Ocean · FCL</td><td class="t">27 days</td><td class="tr">Weekly</td></tr>
+        <tr><td class="pt">Visakhapatnam</td><td class="tr">Shanghai</td><td class="md">Break bulk</td><td class="t">14 days</td><td class="tr">Bi-weekly</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<div class="band">
+  <div class="container">
+    <div class="eyebrow" data-reveal style="color:var(--mustard)">Lane not listed?</div>
+    <h2 data-reveal data-delay="100" style="margin-top:20px">We ship <em>anywhere</em><br>from anywhere in India.</h2>
+    <p data-reveal data-delay="200">Tell us origin, destination and commodity. We'll come back with a quote, transit time and Incoterm options in under 4 working hours.</p>
+    <div class="btns" data-reveal data-delay="300">
+      <a href="contact.html"><button class="btn-o" style="background:var(--mustard);color:var(--ocean-900)">Quote my lane →</button></a>
+    </div>
+  </div>
+</div>
+
+<div id="foot-slot"></div>
+<script src="site/chrome.js"></script>
+</body>
+</html>
