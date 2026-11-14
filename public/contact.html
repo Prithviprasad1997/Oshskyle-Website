@@ -66,15 +66,16 @@
   .ctabar .btns{justify-self:end;display:flex;gap:12px}
 </style>
 <link rel="stylesheet" href="site/responsive.css">
+<link rel="stylesheet" href="site/editorial.css">
 </head>
 <body data-page="contact">
 <div id="nav-slot"></div>
 
 <section class="page-hero">
   <div class="container">
-    <div class="crumb" data-reveal>Home / Contact</div>
-    <h1 data-reveal data-delay="100">Get a quote.<br><em>In four hours.</em></h1>
-    <p class="lead" data-reveal data-delay="200">Call, email, WhatsApp, or fill the form below. A named account manager — not a ticket queue — will respond in under one working hour.</p>
+    <div class="crumb" data-reveal>Oshskyle / Freight enquiries</div>
+    <h1 data-reveal data-delay="100">Plan your <em>next shipment.</em></h1>
+    <p class="lead" data-reveal data-delay="200">Share your origin, destination and cargo details with our pricing team.</p>
   </div>
 </section>
 
@@ -98,18 +99,18 @@
         <p>Origin, destination, commodity and Incoterm — that's usually enough for us to quote. The more you share, the sharper the quote comes back.</p>
         <div class="promise">"Every quote you get from us is all-in. Freight, customs, insurance, last-mile. We don't add 'miscellaneous' after the fact."</div>
       </div>
-      <form class="quote" data-reveal data-delay="100" onsubmit="event.preventDefault();alert('Thanks! We will contact you within 1 working hour.')">
+      <form class="quote" id="quote">
         <div class="row">
-          <div><label>Your name</label><input placeholder="Rahul Sharma"/></div>
-          <div><label>Company</label><input placeholder="ABC Exports Pvt Ltd"/></div>
+          <div><label for="your">Your name</label><input id="your" name="Your name" required placeholder="Rahul Sharma"/></div>
+          <div><label for="company">Company</label><input id="company" name="Company" placeholder="ABC Exports Pvt Ltd"/></div>
         </div>
         <div class="row">
-          <div><label>Email</label><input type="email" placeholder="rahul@abc.com"/></div>
-          <div><label>Phone</label><input placeholder="+91 98765 43210"/></div>
+          <div><label for="email">Email</label><input id="email" name="Email" required type="email" placeholder="rahul@abc.com"/></div>
+          <div><label for="phone">Phone</label><input id="phone" name="Phone" placeholder="+91 98765 43210"/></div>
         </div>
         <div class="row">
-          <div><label>Origin</label><input placeholder="Bengaluru, IN"/></div>
-          <div><label>Destination</label><input placeholder="Dubai, AE"/></div>
+          <div><label for="origin">Origin</label><input id="origin" name="Origin" required placeholder="Bengaluru, IN"/></div>
+          <div><label for="destination">Destination</label><input id="destination" name="Destination" required placeholder="Dubai, AE"/></div>
         </div>
         <div class="row full">
           <div><label>Mode</label>
@@ -122,15 +123,15 @@
           </div>
         </div>
         <div class="row">
-          <div><label>Commodity</label><input placeholder="Garments · HS 6109"/></div>
-          <div><label>Incoterm</label><select><option>EXW</option><option>FOB</option><option>CIF</option><option>DAP</option><option>DDP</option></select></div>
+          <div><label for="commodity">Commodity</label><input id="commodity" name="Commodity" placeholder="Garments · HS 6109"/></div>
+          <div><label for="incoterm">Incoterm</label><select id="incoterm" name="Incoterm"><option>EXW</option><option>FOB</option><option>CIF</option><option>DAP</option><option>DDP</option></select></div>
         </div>
         <div class="row full">
-          <div><label>Weight / volume / packages</label><textarea placeholder="Approx. 8 tonnes · 40HC · 22 pallets · pick up ready by 28-Apr"></textarea></div>
+          <div><label for="weight">Weight / volume / packages</label><textarea id="weight" name="Weight / volume / packages" placeholder="Approx. 8 tonnes · 40HC · 22 pallets · pick up ready by 28-Apr"></textarea></div>
         </div>
         <div class="submit">
-          <p>● Response in under 1 working hour</p>
-          <button class="btn-p" type="submit">Request quote →</button>
+          <p>Opens your email app. Review and send your enquiry.</p>
+          <button class="btn-p" type="submit">Prepare quote email ↗</button>
         </div>
       </form>
     </div>
@@ -165,7 +166,7 @@
   <div class="container">
     <div class="g">
       <h3>Need an urgent pickup? <em>We roll in under two hours</em> across Bengaluru.</h3>
-      <div class="btns"><a href="tel:+916361212063"><button class="btn-o" style="background:var(--mustard);color:var(--ocean-900)">Call now →</button></a></div>
+      <div class="btns"><a href="tel:+916361212063" class="btn-o" style="background:var(--mustard);color:var(--ocean-900)">Call now →</a></div>
     </div>
   </div>
 </div>
