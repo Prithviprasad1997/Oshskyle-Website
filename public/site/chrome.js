@@ -2,11 +2,12 @@
   const page = document.body.dataset.page || 'home';
   const links = [['home','index.html','Home'],['services','services.html','Services'],['coverage','coverage.html','Coverage'],['track','track.html','Track'],['about','about.html','About'],['careers','careers.html','Careers'],['contact','contact.html','Contact']];
   document.getElementById('nav-slot').innerHTML = `
+<a class="skip-link" href="#main-content">Skip to content</a>
 <div class="announce"><div class="inner">
   <span><span class="d">●</span> Operating 24/7 · +91 6361 212 063 · info@oshskylelogistics.com</span>
   <span>Bengaluru HQ · <a href="track.html">Track a shipment →</a></span>
 </div></div>
-<div class="nav"><div class="inner">
+<nav class="nav" aria-label="Main navigation"><div class="inner">
   <a href="index.html" class="lg" aria-label="Oshskyle Logistics">
     <img src="site/logo-full.png" alt="" style="height:64px;width:64px;object-fit:cover;object-position:center 28%;display:block"/>
     <span style="display:flex;flex-direction:column;line-height:1">
@@ -14,18 +15,18 @@
       <span style="font-family:'JetBrains Mono',monospace;font-size:9px;color:#7A8290;letter-spacing:.26em;margin-top:5px">LOGISTICS PVT LTD</span>
     </span>
   </a>
-  <button class="burger" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
-  <div class="nav-menu">
+  <button class="burger" aria-label="Toggle menu" aria-controls="site-menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  <div class="nav-menu" id="site-menu">
     <div class="links">${links.map(([k,h,l])=>`<a href="${h}"${page===k?' class="active"':''}>${l}</a>`).join('')}</div>
     <div class="cta"><a href="contact.html#quote" class="btn">Request a quote ↗</a></div>
   </div>
-</div></div>`;
+</div></nav>`;
   document.getElementById('foot-slot').innerHTML = `
 <div class="foot"><div class="container">
   <div class="top">
     <div>
-      <div style="display:inline-flex;align-items:center;gap:14px;background:#F8F3E9;padding:14px 20px;border-radius:8px"><img src="site/logo.png" style="height:72px;display:block"/></div>
-      <div style="margin-top:18px;line-height:1.7;font-size:14px;color:#C8DDE8"><strong style="color:#fff">Rammahal, 3rd Floor, 2nd Cross</strong><br>Behind Nammura Thindi, Stage 2<br>Naagarbhavi, Bengaluru — 560072<br><br>info@oshskylelogistics.com<br>+91 6361 212 063</div>
+      <div style="display:inline-flex;align-items:center;gap:14px;background:#F8F3E9;padding:14px 20px;border-radius:8px"><img src="site/logo.png" alt="Oshskyle Logistics" style="height:72px;display:block"/></div>
+      <div style="margin-top:18px;line-height:1.7;font-size:14px;color:#C8DDE8"><strong style="color:#fff">Rammahal, 3rd Floor, 2nd Cross</strong><br>Behind Nammura Thindi, Stage 2<br>Naagarbhavi, Bengaluru — 560072<br><br><a href="mailto:info@oshskylelogistics.com">info@oshskylelogistics.com</a><br><a href="tel:+916361212063">+91 6361 212 063</a></div>
       <div class="badges"><span>CHA</span><span>MTO</span><span>ISO 9001</span><span>MSME</span></div>
     </div>
     <div><h4>Services</h4><ul><li><a href="air-freight.html">Air Freight</a></li><li><a href="ocean-freight.html">Ocean Freight</a></li><li><a href="road-trucking.html">Road · Trucking</a></li><li><a href="rail-freight.html">Rail Freight</a></li><li><a href="cold-chain.html">Cold Chain</a></li><li><a href="customs-brokerage.html">Customs Brokerage</a></li></ul></div>
@@ -39,6 +40,7 @@
   const nav=document.querySelector('.nav');
   const burger=nav&&nav.querySelector('.burger');
   if(burger){
+    nav.addEventListener('keydown',event=>{if(event.key==='Escape'&&nav.classList.contains('open')){nav.classList.remove('open');burger.setAttribute('aria-expanded','false');burger.focus()}});
     burger.addEventListener('click',()=>{const o=nav.classList.toggle('open');burger.setAttribute('aria-expanded',o)});
     nav.querySelectorAll('.nav-menu a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');burger.setAttribute('aria-expanded','false')}));
   }

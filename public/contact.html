@@ -70,6 +70,7 @@
 </head>
 <body data-page="contact">
 <div id="nav-slot"></div>
+<main id="main-content" tabindex="-1">
 
 <section class="page-hero">
   <div class="container">
@@ -83,7 +84,7 @@
   <div class="quick" data-reveal>
     <div class="g">
       <div><div class="k">Call us</div><div class="v"><a href="tel:+916361212063">+91 6361 212 063</a></div><div class="h">● Also 91482 92873 · 73537 35559</div></div>
-      <div><div class="k">Email</div><div class="v"><a href="mailto:info@oshskylelogistics.com">info@oshskyle<br>logistics.com</a></div><div class="h">● Reply < 1 hour · working</div></div>
+      <div><div class="k">Email</div><div class="v"><a href="mailto:info@oshskylelogistics.com">info@oshskyle<wbr>logistics.com</a></div><div class="h">Response during working hours</div></div>
       <div><div class="k">WhatsApp Business</div><div class="v"><a href="https://wa.me/916361212063">+91 6361 212 063</a></div><div class="h">● Send a pickup location</div></div>
       <div><div class="k">Bengaluru HQ</div><div class="v">Nagarabhavi,<br>Stage 2</div><div class="h">Mon–Sat · 9am – 10pm IST</div></div>
     </div>
@@ -106,15 +107,15 @@
         </div>
         <div class="row">
           <div><label for="email">Email</label><input id="email" name="Email" required type="email" placeholder="rahul@abc.com"/></div>
-          <div><label for="phone">Phone</label><input id="phone" name="Phone" placeholder="+91 98765 43210"/></div>
+          <div><label for="phone">Phone</label><input id="phone" name="Phone" type="tel" autocomplete="tel" placeholder="+91 98765 43210"/></div>
         </div>
         <div class="row">
           <div><label for="origin">Origin</label><input id="origin" name="Origin" required placeholder="Bengaluru, IN"/></div>
           <div><label for="destination">Destination</label><input id="destination" name="Destination" required placeholder="Dubai, AE"/></div>
         </div>
         <div class="row full">
-          <div><label>Mode</label>
-            <div class="modes">
+          <div><span id="mode-label">Transport mode</span>
+            <div class="modes" role="group" aria-labelledby="mode-label">
               <button type="button" class="mode-btn on">Ocean</button>
               <button type="button" class="mode-btn">Air</button>
               <button type="button" class="mode-btn">Road</button>
@@ -171,6 +172,7 @@
   </div>
 </div>
 
+</main>
 <div id="foot-slot"></div>
 <script src="site/chrome.js"></script>
 </body>
