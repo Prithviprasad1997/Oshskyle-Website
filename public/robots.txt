@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: /.netlify/functions/
+Sitemap: https://www.oshskylelogistics.com/sitemap.xml
