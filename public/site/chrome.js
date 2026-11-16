@@ -33,7 +33,7 @@
     <div><h4>Company</h4><ul><li><a href="about.html">About</a></li><li><a href="coverage.html">Coverage</a></li><li><a href="about.html#leadership">Leadership</a></li><li><a href="careers.html">Careers</a></li><li><a href="contact.html">Contact</a></li></ul></div>
     <div><h4>Resources</h4><ul><li><a href="track.html">Track shipment</a></li><li><a href="contact.html">Request a quote</a></li><li><a href="https://img1.wsimg.com/blobby/go/fcbd3b7b-36b1-405f-b502-4049056e4132/downloads/79b3814f-84df-4ed1-8258-85a7f3036b6e/Incoterms_2025.pdf?ver=1779978152580" target="_blank" rel="noopener">Incoterms 2025</a></li><li><a href="contact.html#quote">Quote enquiries</a></li></ul></div>
   </div>
-  <div class="bot"><span>© 2026 Oshskyle Logistics Private Limited</span><span>Freight photography: Tom Fisk and Simon R. Minshall / Pexels.</span></div>
+  <div class="bot"><span>© 2026 Oshskyle Logistics Private Limited</span><span>Photography: Tom Fisk, AS Photography, Alex Kovshovik and Marcin Jozwiak / Pexels.</span></div>
 </div></div>`;
 
   // Mobile nav toggle
