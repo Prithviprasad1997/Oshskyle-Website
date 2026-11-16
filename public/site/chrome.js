@@ -9,7 +9,7 @@
 </div></div>
 <nav class="nav" aria-label="Main navigation"><div class="inner">
   <a href="index.html" class="lg" aria-label="Oshskyle Logistics">
-    <img src="site/logo-full.png" alt="" style="height:64px;width:64px;object-fit:cover;object-position:center 28%;display:block"/>
+    <span class="brand-symbol"><img src="site/hero-logo.png" alt="" width="48" height="48"></span>
     <span style="display:flex;flex-direction:column;line-height:1">
       <span style="font-family:'Fraunces',serif;font-weight:700;font-size:24px;color:#8B1F1F;letter-spacing:-.015em">OSHSKYLE</span>
       <span style="font-family:'JetBrains Mono',monospace;font-size:9px;color:#7A8290;letter-spacing:.26em;margin-top:5px">LOGISTICS PVT LTD</span>
@@ -25,7 +25,7 @@
 <div class="foot"><div class="container">
   <div class="top">
     <div>
-      <div style="display:inline-flex;align-items:center;gap:14px;background:#F8F3E9;padding:14px 20px;border-radius:8px"><img src="site/logo.png" alt="Oshskyle Logistics" style="height:72px;display:block"/></div>
+      <div class="footer-brand"><span class="brand-symbol"><img src="site/hero-logo.png" alt="" width="48" height="48"></span><strong>Oshskyle Logistics</strong></div>
       <div style="margin-top:18px;line-height:1.7;font-size:14px;color:#C8DDE8"><strong style="color:#fff">Rammahal, 3rd Floor, 2nd Cross</strong><br>Behind Nammura Thindi, Stage 2<br>Naagarbhavi, Bengaluru — 560072<br><br><a href="mailto:info@oshskylelogistics.com">info@oshskylelogistics.com</a><br><a href="tel:+916361212063">+91 6361 212 063</a></div>
       <div class="badges"><span>CHA</span><span>MTO</span><span>ISO 9001</span><span>MSME</span></div>
     </div>
