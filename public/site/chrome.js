@@ -9,7 +9,7 @@
 </div></div>
 <nav class="nav" aria-label="Main navigation"><div class="inner">
   <a href="index.html" class="lg" aria-label="Oshskyle Logistics">
-    <img src="site/logo-full.png" alt="" style="height:64px;width:64px;object-fit:cover;object-position:center 28%;display:block"/>
+    <span class="brand-symbol"><img src="site/hero-logo.png" alt="" width="48" height="48"></span>
     <span style="display:flex;flex-direction:column;line-height:1">
       <span style="font-family:'Fraunces',serif;font-weight:700;font-size:24px;color:#8B1F1F;letter-spacing:-.015em">OSHSKYLE</span>
       <span style="font-family:'JetBrains Mono',monospace;font-size:9px;color:#7A8290;letter-spacing:.26em;margin-top:5px">LOGISTICS PVT LTD</span>
@@ -25,7 +25,7 @@
 <div class="foot"><div class="container">
   <div class="top">
     <div>
-      <div style="display:inline-flex;align-items:center;gap:14px;background:#F8F3E9;padding:14px 20px;border-radius:8px"><img src="site/logo.png" alt="Oshskyle Logistics" style="height:72px;display:block"/></div>
+      <div class="footer-brand"><span class="brand-symbol"><img src="site/hero-logo.png" alt="" width="48" height="48"></span><strong>Oshskyle Logistics</strong></div>
       <div style="margin-top:18px;line-height:1.7;font-size:14px;color:#C8DDE8"><strong style="color:#fff">Rammahal, 3rd Floor, 2nd Cross</strong><br>Behind Nammura Thindi, Stage 2<br>Naagarbhavi, Bengaluru — 560072<br><br><a href="mailto:info@oshskylelogistics.com">info@oshskylelogistics.com</a><br><a href="tel:+916361212063">+91 6361 212 063</a></div>
       <div class="badges"><span>CHA</span><span>MTO</span><span>ISO 9001</span><span>MSME</span></div>
     </div>
@@ -33,7 +33,7 @@
     <div><h4>Company</h4><ul><li><a href="about.html">About</a></li><li><a href="coverage.html">Coverage</a></li><li><a href="about.html#leadership">Leadership</a></li><li><a href="careers.html">Careers</a></li><li><a href="contact.html">Contact</a></li></ul></div>
     <div><h4>Resources</h4><ul><li><a href="track.html">Track shipment</a></li><li><a href="contact.html">Request a quote</a></li><li><a href="https://img1.wsimg.com/blobby/go/fcbd3b7b-36b1-405f-b502-4049056e4132/downloads/79b3814f-84df-4ed1-8258-85a7f3036b6e/Incoterms_2025.pdf?ver=1779978152580" target="_blank" rel="noopener">Incoterms 2025</a></li><li><a href="contact.html#quote">Quote enquiries</a></li></ul></div>
   </div>
-  <div class="bot"><span>© 2026 Oshskyle Logistics Private Limited</span><span>Let's move your business forward — together.</span></div>
+  <div class="bot"><span>© 2026 Oshskyle Logistics Private Limited</span><span>Photography: Tom Fisk, AS Photography, Alex Kovshovik and Marcin Jozwiak / Pexels.</span></div>
 </div></div>`;
 
   // Mobile nav toggle
